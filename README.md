@@ -373,6 +373,28 @@ RNLocalize.removeEventListener("change", handleLocalizationChange);
 
 ---
 
+### useLocalizationChange()
+
+Hook wrapping `addEventListener` and `removeEventListener`
+
+#### Method type
+
+```ts
+type useLocalizationChange = (callback: Function) => void;
+```
+
+#### Usage example
+
+```js
+const [locales, setLocales] = useState();
+useLocalizationChange(
+  useCallback(() => setLocales(RNLocalize.getLocales()), []),
+);
+// Note: To avoid the running the effect too often, it's important to wrap the callback in useCallback before passing it to useLocalizationChange as shown in the example.
+```
+
+---
+
 ### findBestAvailableLanguage()
 
 Returns the best language tag possible and its reading direction (⚠️ **it respects the user preferred languages list order, see [explanations](https://github.com/zoontek/react-native-localize/issues/57#issuecomment-508456427)**). Useful to pick the best translation available.

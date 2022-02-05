@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   getCalendar,
   getCountry,
@@ -76,6 +77,14 @@ export function findBestAvailableLanguage<T extends string>(
   }
 }
 
+export function useLocalizationChange(callback: Function) {
+  useEffect(() => {
+    const thisCallback = callback;
+    addEventListener("change", thisCallback);
+    return () => removeEventListener("change", thisCallback);
+  }, [callback]);
+}
+
 export {
   getCalendar,
   getCountry,
@@ -103,7 +112,7 @@ export default {
   usesAutoDateAndTime,
   usesAutoTimeZone,
   usesMetricSystem,
-
+  useLocalizationChange,
   findBestAvailableLanguage,
   addEventListener,
   removeEventListener,

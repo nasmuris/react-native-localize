@@ -23,6 +23,7 @@ const getTimeZone = () => "Europe/Paris"; // the timezone you want
 const uses24HourClock = () => true;
 const usesMetricSystem = () => true;
 
+const useLocalizationChange = jest.fn();
 const addEventListener = jest.fn();
 const removeEventListener = jest.fn();
 
@@ -37,6 +38,7 @@ module.exports = {
   getTimeZone,
   uses24HourClock,
   usesMetricSystem,
+  useLocalizationChange,
   addEventListener,
   removeEventListener,
 };
